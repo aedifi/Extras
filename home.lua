@@ -21,7 +21,7 @@ function HandleGoHomeCommand(Split, Player)
 		end
 		Player:SendMessage(cChatColor.LightGray .. "Took you to that home.")
 	else
-		Player:SendMessage(cChatColor.LightGray .. "Couldn't find that home.")
+		Player:SendMessageFailure("Could not find that home, does it exist?")
 	end
 	return true
 end
@@ -36,12 +36,12 @@ function HandleSetHomeCommand(Split, Player)
 		local file = io.open(HomesFolder .. "/" .. UUID .. "." .. Split[2], "w")
 		file:write(PosX .. "\n" .. PosY .. "\n" .. PosZ .. "\n" .. World)
         file:close()
-        Player:SendMessage(cChatColor.LightGray .. "Set that home at X: " .. PosX .. ", Y: " .. PosY .. ", Z: " .. PosZ .. ".")
+        Player:SendMessageSuccess("Set your new home at X: " .. PosX .. ", Y: " .. PosY .. ", Z: " .. PosZ .. ".")
 	else
 		local file = io.open(HomesFolder .. "/" .. UUID .. ".home", "w")
 		file:write(PosX .. "\n" .. PosY .. "\n" .. PosZ .. "\n" .. World)
 		file:close()
-		Player:SendMessage(cChatColor.LightGray .. "Set your main home at X: " .. PosX .. ", Y: " .. PosY .. ", Z: " .. PosZ .. ".")	
+		Player:SendMessageSuccess("Set your main home at X: " .. PosX .. ", Y: " .. PosY .. ", Z: " .. PosZ .. ".")	
 	end
 	return true
 end
@@ -55,7 +55,7 @@ function HandleDelHomeCommand(Split, Player)
 		os.remove(HomesFolder .. "/" .. UUID .. ".home", "w")
 		Player:SendMessage(cChatColor.LightGray .. "Removed your main home.")	
 	else
-		Player:SendMessage(cChatColor.LightGray .. "Couldn't find that home.")
+		Player:SendMessageFailure("Could not find that home, does it exist?")
 	end
 	return true
 end

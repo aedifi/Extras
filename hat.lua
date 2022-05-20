@@ -7,15 +7,15 @@ function HandleHatCommand(Split, Player)
 	local ArmorSlot = Player:GetInventory():GetArmorSlot(0)
 	if not ArmorSlot:IsEmpty() then
 		Player:GetInventory():AddItem(ArmorSlot)
-    end
+	end
     
 	-- Set the hat slot to the item being held.
 	if not Player:GetEquippedItem():IsEmpty() then
 		Player:GetInventory():SetArmorSlot(0, Hat)
 		Player:GetInventory():RemoveOneEquippedItem()
-		Player:SendMessage(cChatColor.LightGray .. "Placed that item on your head.")
+		Player:SendMessageSuccess("Enjoy your new hat (" .. Hat .. ").")
 	else
-		Player:SendMessage(cChatColor.LightGray .. "Couldn't find any selected item to hat.")
+		Player:SendMessageFailure("Could not find an item in your hand, is it wearable?")
 	end
 	return true
 end

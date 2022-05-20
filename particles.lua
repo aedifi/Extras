@@ -10,13 +10,13 @@ function HandleTrailCommand(Split, Player)
 		Player:SendMessage(cChatColor.LightGray .. "Usage: " .. Split[1] .. " <particle | air>")
 	elseif Split[2] == "air" then
 		ParticlePlayers[Player:GetUUID()] = nil
-		Player:SendMessage(cChatColor.LightGray .. "Cleansed your player of any particulates.")
+		Player:SendMessageSuccess("Cleansed your player of any particulates.")
 	else
 		if ParticleTypes[Split[2]] then
 			ParticlePlayers[Player:GetUUID()] = Split[2]
-			Player:SendMessage(cChatColor.LightGray .. "Gave your player a particle trail.")
+			Player:SendMessageSuccess("Gave your player a particle trail (" .. Split[2] .. ").")
 		else
-			Player:SendMessage(cChatColor.LightGray .. "Couldn't find that particle.")
+			Player:SendMessageFailure("Could not find that particle, does it exist?")
 		end
 		return true
 	end
@@ -28,7 +28,7 @@ function HandleParticlesCommand(Split, Player)
 	for key, value in pairs(ParticleTypes) do
 		ListParticles = ListParticles .. key .. ", "
 	end
-	Player:SendMessage(cChatColor.LightGray .. "Particles (" .. #ParticleTypes .. "): " .. ListParticles:sub(1, ListParticles:len() - 2))
+	Player:SendMessage(cChatColor.LightGray .. "Particles (" .. #ListParticles:sub(2, ListParticles:len() / 10) .. "): " .. ListParticles:sub(1, ListParticles:len() - 2))
 end
 
 function OnPlayerDestroyed(Player)

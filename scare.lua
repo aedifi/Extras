@@ -14,17 +14,8 @@ function HandleScareCommand(Split, Player)
 				OtherPlayer:GetClientHandle():SendSoundEffect("entity.endermen.scream", Player:GetPosition(), 1, 0)
 			end
 		end
-		if not Split[2] == "everyone" then
-			Player:SendMessage(cChatColor.LightGray .. "Made quite the scare for that player.")
-		end
 	end
-	if Split[2] == nil then
-		Player:SendMessage(cChatColor.LightGray .. "Usage: ".. Split[1] .." <player | everyone>")
-	elseif Split[2] == "everyone" then
-		cRoot:Get():ForEachPlayer(Jumpscare)
-		Player:SendMessage(cChatColor.LightGray .. "Made quite the scare for every player.")
-	elseif not cRoot:Get():FindAndDoWithPlayer(table.concat(Split, " ", 2), Jumpscare) then
-		Player:SendMessage(cChatColor.LightGray .. "Couldn't find that player.")
-	end
+	cRoot:Get():ForEachPlayer(Jumpscare)
+	Player:SendMessageSuccess("Created a jumpscare for every player.")
 	return true
 end

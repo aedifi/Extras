@@ -5,7 +5,7 @@ g_PluginInfo =
 {
 	Name = "Extras",
 	Version = "1",
-	Date = "2021-03-15",
+	Date = "2022-05-19",
 	SourceLocation = "https://github.com/aedifi/extras",
 	Description = [[Fun commands and extra features.]],
 	
@@ -13,91 +13,100 @@ g_PluginInfo =
 	{
 		["/delhome"] = 
 		{
-			Permission = "extras.delhome",
+			Alias = {"/dhome", "/deletehome"},
+			Permission = "extras.visitor.delhome",
 			Handler = HandleDelHomeCommand,
 			HelpString = "Deletes a home or your main home.",
 		},
 		["/disguise"] = 
 		{
-			Permission = "extras.disguise",
+			Alias = "/dis",
+			Permission = "extras.architect.disguise",
 			Handler = HandleDisguiseCommand,
 			HelpString = "Turns you into an entity.",
 		},
 		["/gohome"] = 
 		{
-			Permission = "extras.gohome",
+			Alias = "/home",
+			Permission = "extras.visitor.gohome",
 			Handler = HandleGoHomeCommand,
 			HelpString = "Takes you to a personal home.",
         },
 		["/gowarp"] = 
 		{
-			Permission = "extras.gowarp",
+			Alias = "/warp",
+			Permission = "extras.visitor.gowarp",
 			Handler = HandleGoWarpCommand,
 			HelpString = "Takes you to an operable warp.",
         },
 		["/hat"] = 
 		{
-			Permission = "extras.hat",
+			Alias = "/head",
+			Permission = "extras.architect.hat",
 			Handler = HandleHatCommand,
 			HelpString = "Gives you a special hat.",
 		},
 		["/homes"] = 
 		{
-			Permission = "extras.homes",
+			Permission = "extras.visitor.homes",
 			Handler = HandleListHomeCommand,
 			HelpString = "Lists personal homes.",
         },
 		["/name"] = 
 		{
-			Permission = "extras.name",
+			Alias = {"/nick", "/nickname"},
+			Permission = "extras.architect.name",
 			Handler = HandleNameCommand,
 			HelpString = "Changes your name.",
 		},
 		["/particles"] = 
 		{
-			Permission = "extras.particles",
+			Alias = "/effects",
+			Permission = "extras.visitor.particles",
 			Handler = HandleParticlesCommand,
 			HelpString = "Lists configured particles.",
 		},
 		["/reveal"] = 
 		{
-			Permission = "extras.reveal",
+			Alias = {"/undis", "/undisguise"},
+			Permission = "extras.architect.reveal",
 			Handler = HandleRevealCommand,
 			HelpString = "Reveals you of any disguise.",
 		},
 		["/scare"] = 
 		{
-			Permission = "extras.scare",
+			Alias = "/jumpscare",
+			Permission = "extras.architect.scare",
 			Handler = HandleScareCommand,
 			HelpString = "Scares a player.",
 		},
 		["/sethome"] = 
 		{
-			Permission = "extras.sethome",
+			Permission = "extras.visitor.sethome",
 			Handler = HandleSetHomeCommand,
 			HelpString = "Sets a home at your coordinates.",
 		},
 		["/setwarp"] = 
 		{
-			Permission = "extras.setwarp",
+			Permission = "extras.architect.setwarp",
 			Handler = HandleSetWarpCommand,
 			HelpString = "Sets a warp at your coordinates.",
 		},
 		["/speed"] = 
 		{
-			Permission = "extras.speed",
+			Permission = "extras.architect.speed",
 			Handler = HandleSpeedCommand,
 			HelpString = "Sets your maximum speed.",
 		},
 		["/trail"] = 
 		{
-			Permission = "extras.trail",
+			Permission = "extras.architect.trail",
 			Handler = HandleTrailCommand,
 			HelpString = "Sets a particle trail.",
 		},
 		["/warps"] = 
 		{
-			Permission = "extras.warps",
+			Permission = "extras.visitor.warps",
 			Handler = HandleListWarpCommand,
 			HelpString = "Lists operable warps.",
         },

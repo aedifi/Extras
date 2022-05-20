@@ -65,7 +65,7 @@ function HandleDisguiseCommand(Split, Player)
 		elseif MobType ~= mtInvalidType then
 			DisguiseFor[Player:GetUUID()] = World:SpawnMob(X, Y, Z, MobType, IsBaby)
 		else
-			Player:SendMessage(cChatColor.LightGray .. "Couldn't find that entity.")
+			Player:SendMessageFailure("Could not find that entity (" .. Split[2] .. ").")
 			return true
 		end
 
@@ -80,9 +80,9 @@ function HandleDisguiseCommand(Split, Player)
 
 		local StartsWith = string.sub(EntityString, 1, 1)
 		if StartsWith == "e" or StartsWith == "i" or StartsWith == "o" then
-			Player:SendMessage(cChatColor.LightGray .. "Disguised you as an " .. EntityString .. ".")
+			Player:SendMessageSuccess("Disguised you as an " .. EntityString .. ".")
 		else
-			Player:SendMessage(cChatColor.LightGray .. "Disguised you as a " .. EntityString .. ".")
+			Player:SendMessageSuccess("Disguised you as a " .. EntityString .. ".")
 		end
 	end
 	return true
@@ -91,9 +91,9 @@ end
 function HandleRevealCommand(Split, Player)
 	if DisguiseFor[Player:GetUUID()] ~= nil then
 		DestroyDisguise(Player)
-		Player:SendMessage(cChatColor.LightGray .. "Revealed your true being.")
+		Player:SendMessageSuccess("Removed the disguise from your player.")
 	else   
-		Player:SendMessage(cChatColor.LightGray .. "Couldn't find that you were disguised.") 
+		Player:SendMessageFailure("Could not find a disguise to remove.") 
 	end    
 	return true
 end
